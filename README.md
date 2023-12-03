@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the command-line interface (CLI) version of the CLEM-REG Napari plugin. CLEM-REG is a powerful tool for registering and analyzing correlative light and electron microscopy (CLEM) images. This CLI version allows you to use the same functionalities from the command line, making it easier to integrate with other tools and automate your workflows.
+This repository contains the command-line interface (CLI) version of the CLEM-REG Napari plugin. CLEM-REG is a powerful tool for registering and analyzing correlative light and electron microscopy (CLEM) images. This CLI version allows you to use the same functionalities from the command line, making it easier to integrate with other tools and automate your workflows. This has been tested on the Liverpool Shared Research Facilities HPC Cluster and we have found a significant perfomance increase by running the registration without napari. The next steps are to integrate more segmentation algorithms and to give users a web interface to visualise intermediary results.
 
 ## Features
 
