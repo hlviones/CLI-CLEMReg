@@ -38,6 +38,8 @@ def main():
             lm = linked_layers[args.mito_channel]
         else:
             return f"ERROR: Mito Channel has not been set and LM image has {lm.data.shape[0]}"
+    elif len(lm.data.shape) == 4:
+        lm = lm
     else:
         return f"ERROR: LM Data is not 3D, shape is {len(lm.data.shape)}"
 
