@@ -27,6 +27,10 @@ From: ubuntu:20.04
     unzip main.zip
     mv CLI-CLEMReg-main/Headless/* ./
     rm -rf CLI-CLEMReg-main
+    mv empanada_configs /empanada_configs
+    cd /empanada_configs
+    wget https://zenodo.org/record/6861565/files/MitoNet_v1.pth?download=1
+    wget https://zenodo.org/record/6861565/files/MitoNet_v1_quantized.pth?download=1
 %environment
     export LC_ALL=C
 
