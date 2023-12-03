@@ -32,7 +32,7 @@ def load_model_to_device(fpath_or_url, device):
     """
     #
 
-    model = torch.jit.load("./empanada_config/" + fpath_or_url, map_location=device)
+    model = torch.jit.load("/empanada_configs/" + fpath_or_url, map_location=device)
 
 
     return model
