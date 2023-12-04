@@ -9,7 +9,7 @@ This repository contains the command-line interface (CLI) version of the CLEM-RE
 You can install the CLI version of the CLEM-REG Napari plugin by cloning this repository and building the container from the .def file. Here's how you can do it:
 
 ```bash
-sudo apptainer build cbf_clem_reg.sif cbf_Clem_reg.def
+sudo apptainer build cbf_clem_reg.sif cbf_clem_reg.def
 ```
 ## Usage
 
@@ -21,4 +21,4 @@ apptainer run --containall --bind ./:/input,output/:/output --nv cbf_clem_reg.si
 ## TODO
 - Implement alternate segmentation algorithms
 - Web interface for intermediary results
-- SLURMGUI workfloww
+- SLURMGUI workflow
