@@ -10,7 +10,7 @@ from warp_image_volume import warp_image_volume
 import argparse
 from tifffile import imwrite
 # Create the parser
-from os import mkdir
+from os import mkdir, path
 import numpy as np
 import napari
 import skimage
@@ -20,7 +20,8 @@ from napari.layers import Image, Shapes, Labels, Points
 
 
 def main():
-    mkdir(args.output_folder)
+    if not path.exists(args.output_folder):
+        mkdir(args.output_folder)
     viewer = napari.Viewer(show=False)
     print("Loading EM Data")
     em = skimage.io.imread(args.em_input)   
