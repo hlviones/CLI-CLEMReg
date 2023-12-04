@@ -24,12 +24,12 @@ def main():
         mkdir(args.output_folder)
     viewer = napari.Viewer(show=False)
     print("Loading EM Data")
-    em = skimage.io.imread(args.em_input)   
+    em = skimage.io.imread(path.join(args.input_folder, args.em_input))   
     
     viewer.add_image(em, name=args.em_input.replace(".tif", ""))
 
     print("Loading LM Data")
-    lm = skimage.io.imread(args.lm_input)  
+    lm = skimage.io.imread(path.join(args.input_folder, args.lm_input))  
 
 
     
@@ -148,6 +148,11 @@ if __name__ == "__main__":
                         type=str,
                         required=True,
                         help='Here you select your EM data which will act as the reference point for the LM to be aligned to.')
+    main_group.add_argument('--input_folder',
+                        type=str,
+                        required=True,
+                        help='Here you select your folder for your input data')
+
 
 
     main_group.add_argument('--mito_channel',
