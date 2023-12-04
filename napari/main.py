@@ -67,7 +67,7 @@ def main():
     lm_seg = log_segmentation(lm, args.log_sigma, args.threshold)
 
     if args.save_intermediary == True:
-        imwrite(args.output_folder + "Moving_Segmentation" + ".tif", lm_seg.data.astype(np.int64))
+        imwrite(path.join(args.output_folder, "Moving_Segmentation", ".tif"), lm_seg.data.astype(np.int64))
     viewer.add_labels(lm_seg.data.astype(np.int64),
                         name="Moving_Segmentation")
     
@@ -76,7 +76,7 @@ def main():
     em = viewer.layers[args.em_input.replace(".tif", "")]
     em_seg = empanada_segmentation(em.data, False, args)
     if args.save_intermediary == True:
-        imwrite(args.output_folder + "Fixed_Segmentation" + ".tif", em_seg.astype(np.int64))
+        imwrite(path.join(args.output_folder, "Fixed_Segmentation", ".tif"), em_seg.astype(np.int64))
 
     viewer.add_labels(em_seg.astype(np.int64),
                         name="Fixed_Segmentation")
@@ -84,12 +84,12 @@ def main():
     mp = point_cloud_sampling(viewer.layers["Moving_Segmentation"], args.sampling_freq, args.sampling_sigma)
     fp = point_cloud_sampling(viewer.layers["Fixed_Segmentation"], args.sampling_freq, args.sampling_sigma)
     if args.save_intermediary == True:
-        imwrite(args.output_folder + "moving_points" + ".tif", mp.data)
+        imwrite(path.join(args.output_folder, "Moving_Points", ".tif"), mp.data)
     viewer.add_points(mp.data,
                         name='moving_points',
                         face_color='red')
     if args.save_intermediary == True:
-        imwrite(args.output_folder + "fixed_points" + ".tif", fp.data)
+        imwrite(path.join(args.output_folder, "Fixed_Segmentation", ".tif"), fp.data)
     viewer.add_points(fp.data,
                         name='fixed_points',
                         face_color='blue')
@@ -123,11 +123,11 @@ def main():
             data, kwargs = image_data
             viewer.add_image(data, **kwargs)
             layers.append(viewer.layers[kwargs['name']])
-            imwrite(args.output_folder + kwargs['name'] + ".tif", data)
+            imwrite(path.join(args.output_folder, kwargs['name'], ".tif"), data)
 
     else:
         data, kwargs = warp_img
-        imwrite(args.output_folder + kwargs['name'] + ".tif", data)
+        imwrite(path.join(args.output_folder, kwargs['name'], ".tif"), data)
         viewer.add_image(data, **kwargs)
         
 
